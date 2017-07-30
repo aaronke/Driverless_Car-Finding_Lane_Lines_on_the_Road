@@ -1,47 +1,44 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Finding Lane Lines on the Road**
 
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
+* This project is one of the course projects in Udacity driverless car nanodegree term1.
+  Goal of this project is to find the driving lanes of road video.
 
 
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images_output/solidWhiteCurve.jpg
 
 ---
 
-### Reflection
+### 1. Project pipeline
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 5 steps:
+* Convert the images into grayscale.
+* Using Canny edge detection to identify edges including lanes
+* Hough transform is used to filter out driving lanes
+* Then we have a customized draw_lines function to draw two single lines on the images.
+* Finanly process the image frame of the video one by one, then create a new video with drawing lines.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+In order to draw a single line on the left and right lanes, draw_lines() function is modified.
+
+All the lines found by hough transform method are classified into left/right group by slope.
+Then linregress mothed used to fit a line to get slope, intercept so that we can calculate the top/bottom points
+of the left/right lanes.
 
 ![alt text][image1]
 
 
-### 2. Identify potential shortcomings with your current pipeline
+### 2. Potential shortcomings with current pipeline
+
+* Noticed in a few image frames, no lane is identified makes the video drawing red lane flashing.
+* A more precise method is needed to skip the detected lane which are not possible to be a driving lane.
 
 
-One potential shortcoming would be what would happen when ... 
+### 3. Suggest possible improvements to current pipeline
 
-Another shortcoming could be ...
-
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+* Provide a robust method for interset_area as the lane position will be changed depend on driving condition.
+* Curve roads need to be considered.
