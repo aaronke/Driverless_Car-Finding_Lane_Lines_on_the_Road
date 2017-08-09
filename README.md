@@ -9,7 +9,6 @@
 
 
 [image1]: ./test_images_output/solidWhiteCurve.jpg
-[gif1]: ./test_videos_output/car_lane_video_right_.gif
 ---
 
 ### 1. Project pipeline
@@ -29,7 +28,7 @@ All the lines found by hough transform method are classified into left/right gro
 Then linregress mothed used to fit a line to get slope, intercept so that we can calculate the top/bottom points
 of the left/right lanes.
 
-![alt text][gif1]
+![alt text](./test_videos_output/car_lane_video_right_.gif)
 
 
 ### 2. Potential shortcomings with current pipeline
