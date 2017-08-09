@@ -7,8 +7,6 @@
 * This project is one of the course projects in Udacity driverless car nanodegree term1.
   Goal of this project is to find the driving lanes of road video.
 
-
-[image1]: ./test_images_output/solidWhiteCurve.jpg
 ---
 
 ### 1. Project pipeline
